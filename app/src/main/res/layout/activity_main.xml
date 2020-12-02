@@ -1,14 +1,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.justclean.task.ui.main.MainViewModel" />
 
         <variable
             name="adapter"
-            type="com.justclean.task.ui.main.adapter.PokemonAdapter" />
+            type="com.justclean.task.ui.adapter.PostsAdapter" />
 
     </data>
 
@@ -26,16 +28,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
+            <include
+                android:id="@+id/main_toolbar"
+                layout="@layout/toolbar_home" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:padding="6dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            android:scrollbars="vertical"
+            app:adapter="@{adapter}"
+            app:adapterPokemonList="@{vm.pokemonListLiveData}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:paginationPokemonList="@{vm}"
+            app:spanCount="2"
+            app:toast="@{vm.toastLiveData}"
+            tools:listitem="@layout/item_pokemon" />
 
         <ProgressBar
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:gone="@{!vm.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
