@@ -10,6 +10,7 @@ import com.justclean.task.network.PostClient
 import com.justclean.task.persistence.PostDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class MainRepository /*@Inject*/ constructor(
     private val postClient: PostClient,
@@ -17,7 +18,7 @@ class MainRepository /*@Inject*/ constructor(
 ) : Repository {
 
     @WorkerThread
-    suspend fun fetchPokemonList(
+    suspend fun fetchPostList(
         page: Int,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
@@ -45,7 +46,7 @@ class MainRepository /*@Inject*/ constructor(
                     onError(message())
                 }
         } else {
-            emit(pokemonDao.getAllPokemonList(page))
+            emit(pokemonDao.getAllPostList(page))
             onSuccess()
         }
     }.flowOn(Dispatchers.IO)
