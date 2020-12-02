@@ -11,11 +11,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.justclean.task.R
+import com.justclean.task.databinding.ItemPokemonBinding
+import com.justclean.task.model.Post
+import com.justclean.task.ui.details.DetailActivity
 
 
 class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
 
-    private val items: MutableList<Pokemon> = mutableListOf()
+    private val items: MutableList<Post> = mutableListOf()
     private var onClickedAt = 0L
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
@@ -35,16 +38,16 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
         }
     }
 
-    fun setPokemonList(pokemonList: List<Pokemon>) {
+    fun setPokemonList(pokemonList: List<Post>) {
         val previousItemSize = items.size
         items.clear()
         items.addAll(pokemonList)
         notifyItemRangeChanged(previousItemSize, pokemonList.size)
     }
 
-    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         holder.binding.apply {
-            pokemon = items[position]
+            post = items[position]
             executePendingBindings()
         }
     }

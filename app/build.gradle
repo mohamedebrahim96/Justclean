@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.plugin.parcelize'
+
 }
 apply from: '../dependencies.gradle'
 
@@ -68,4 +70,11 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutinesVersion"
+
+    // recyclerView
+    implementation "androidx.recyclerview:recyclerview:$versions.recyclerView"
+    implementation "com.github.skydoves:baserecyclerviewadapter:$versions.baseAdapter"
+
+    // transformation
+    implementation "com.github.skydoves:transformationlayout:$versions.transformationLayout"
 }
