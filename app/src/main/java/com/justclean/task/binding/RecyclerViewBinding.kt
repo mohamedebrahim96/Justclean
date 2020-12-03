@@ -25,10 +25,10 @@ object RecyclerViewBinding {
 
     @JvmStatic
     @BindingAdapter("adapterPostList")
-    fun bindAdapterPokemonList(view: RecyclerView, pokemonList: List<Post>?) {
-        pokemonList.whatIfNotNullOrEmpty { itemList ->
+    fun bindAdapterPostList(view: RecyclerView, postList: List<Post>?) {
+        postList.whatIfNotNullOrEmpty { itemList ->
             view.adapter.whatIfNotNullAs<PostsAdapter> { adapter ->
-                adapter.setPokemonList(itemList)
+                adapter.setPostList(itemList)
             }
         }
     }

@@ -38,11 +38,11 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
         }
     }
 
-    fun setPokemonList(pokemonList: List<Post>) {
+    fun setPostList(postList: List<Post>) {
         val previousItemSize = items.size
         items.clear()
-        items.addAll(pokemonList)
-        notifyItemRangeChanged(previousItemSize, pokemonList.size)
+        items.addAll(postList)
+        notifyItemRangeChanged(previousItemSize, postList.size)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {

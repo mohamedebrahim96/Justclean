@@ -20,7 +20,7 @@ class CommentViewModel @AssistedInject constructor(
     @Assisted private val postID: Int
 ) : LiveCoroutinesViewModel() {
 
-    val pokemonInfoLiveData: LiveData<PostComment?>
+    val postComentLiveData: LiveData<PostComment?>
 
     private val _toastLiveData: MutableLiveData<String> = MutableLiveData()
     val toastLiveData: LiveData<String> get() = _toastLiveData
@@ -30,7 +30,7 @@ class CommentViewModel @AssistedInject constructor(
     init {
         Timber.d("init DetailViewModel")
 
-        pokemonInfoLiveData = launchOnViewModelScope {
+        postComentLiveData = launchOnViewModelScope {
             isLoading.set(true)
             commentRepository.fetchCommentList(
                 id = postID,

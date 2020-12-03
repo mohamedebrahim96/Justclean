@@ -14,7 +14,6 @@ import com.justclean.task.R
 import com.justclean.task.base.DataBindingActivity
 import com.justclean.task.databinding.ActivityCommentBinding
 import com.justclean.task.extensions.argument
-import com.justclean.task.extensions.onTransformationEndContainerApplyParams
 import com.justclean.task.model.Post
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
@@ -33,7 +32,7 @@ class CommentActivity : DataBindingActivity() {
     }
 
     private val binding: ActivityCommentBinding by binding(R.layout.activity_comment)
-    private val PostItem: Post by argument(EXTRA_POKEMON)
+    private val PostItem: Post by argument(EXTRA_POSTS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
        // onTransformationEndContainerApplyParams()
@@ -47,13 +46,13 @@ class CommentActivity : DataBindingActivity() {
 
     companion object {
         @VisibleForTesting
-        const val EXTRA_POKEMON = "EXTRA_POKEMON"
+        const val EXTRA_POSTS = "EXTRA_POSTS"
 
         fun startActivity(transformationLayout: TransformationLayout, post: Post) {
             val context = transformationLayout.context
             if (context is Activity) {
                 val intent = Intent(context, CommentActivity::class.java)
-                intent.putExtra(EXTRA_POKEMON, post)
+                intent.putExtra(EXTRA_POSTS, post)
                 TransformationCompat.startActivity(transformationLayout, intent)
             }
         }

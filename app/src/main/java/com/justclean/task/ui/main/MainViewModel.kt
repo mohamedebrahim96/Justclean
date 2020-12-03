@@ -44,9 +44,4 @@ class MainViewModel @ViewModelInject constructor(
             }
         }
     }
-
-    @MainThread
-    fun fetchPokemonList() {
-        postFetchingIndex.value++
-    }
 }
