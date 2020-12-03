@@ -46,7 +46,7 @@
             android:scrollbars="vertical"
             app:adapter="@{adapter}"
             app:adapterPostList="@{vm.postListLiveData}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"

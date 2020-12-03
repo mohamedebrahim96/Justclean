@@ -14,8 +14,8 @@ import com.justclean.task.model.PostComment
 @Dao
 interface PostCommentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPokemonInfo(pokemonInfo: PostComment)
+    suspend fun insertPostComment(postComment: PostComment)
 
-    @Query("SELECT * FROM PostComment WHERE name = :name_")
-    suspend fun getPokemonInfo(name_: String): PostComment?
+    @Query("SELECT * FROM PostComment WHERE id = :id")
+    suspend fun getPostComment(id: Int): PostComment?
 }

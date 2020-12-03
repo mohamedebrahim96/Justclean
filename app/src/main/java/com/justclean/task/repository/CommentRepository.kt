@@ -6,8 +6,9 @@
 package com.justclean.task.repository
 
 import androidx.annotation.WorkerThread
+import com.justclean.task.model.PostComment
 import com.justclean.task.network.PostClient
-import com.justclean.task.persistence.PostDao
+import com.justclean.task.persistence.PostCommentDao
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onException
@@ -18,31 +19,29 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class MainRepository @Inject constructor(
+class CommentRepository @Inject constructor(
     private val postClient: PostClient,
-    private val PostDao: PostDao
+    private val postCommentDao: PostCommentDao
 ) : Repository {
 
     @WorkerThread
-    suspend fun fetchPostList(
-        page: Int,
+    suspend fun fetchCommentList(
+        id: Int,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
-    ) = flow {
-        var posts = PostDao.getAllPostList()
-        if (posts.isEmpty()) {
-            val response = postClient.fetchPostList()
+    ) = flow<PostComment?> {
+        val postComment = postCommentDao.getPostComment(id)
+        if (postComment == null) {
+            val response = postClient.fetchPostComment(id = id)
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
-                    posts = response
-                    posts.forEach { pokemon -> pokemon.page = page }
-                    PostDao.insertPostList(posts)
-                    emit(PostDao.getAllPostList())
+                    postCommentDao.insertPostComment(response)
+                    emit(response)
                     onSuccess()
                 }
             }
                 // handle the case when the API request gets an error response.
-                //internal server error.
+                // e.g. internal server error.
                 .onError {
                     onError(message())
                 }
@@ -52,7 +51,7 @@ class MainRepository @Inject constructor(
                     onError(message())
                 }
         } else {
-            emit(PostDao.getAllPostList())
+            emit(postComment)
             onSuccess()
         }
     }.flowOn(Dispatchers.IO)

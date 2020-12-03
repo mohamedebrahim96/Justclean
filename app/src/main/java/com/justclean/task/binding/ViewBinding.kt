@@ -7,6 +7,7 @@ package com.justclean.task.binding
 
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.databinding.BindingAdapter
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 
@@ -28,6 +29,18 @@ object ViewBinding {
             View.GONE
         } else {
             View.VISIBLE
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("onBackPressed")
+    fun bindOnBackPressed(view: View, onBackPress: Boolean) {
+        val context = view.context
+        if (onBackPress && context is OnBackPressedDispatcherOwner) {
+            view.setOnClickListener {
+                context.onBackPressedDispatcher.onBackPressed()
+            }
         }
     }
 }
