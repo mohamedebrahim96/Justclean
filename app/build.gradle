@@ -61,6 +61,15 @@ dependencies {
     implementation "androidx.room:room-ktx:$versions.roomVersion"
     kapt "androidx.room:room-compiler:$versions.roomVersion"
 
+    // network
+    implementation "com.github.skydoves:sandwich:$versions.sandwichVersion"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$versions.okhttpVersion"
+
+    // whatIf
+    implementation "com.github.skydoves:whatif:$versions.whatIfVersion"
 
     // moshi
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshiVersion"
@@ -77,4 +86,7 @@ dependencies {
 
     // transformation
     implementation "com.github.skydoves:transformationlayout:$versions.transformationLayout"
+
+    // debugging
+    implementation "com.jakewharton.timber:timber:$versions.timberVersion"
 }
