@@ -7,6 +7,8 @@ package com.justclean.task.ui.main
 
 import androidx.annotation.MainThread
 import androidx.databinding.ObservableBoolean
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.justclean.task.base.LiveCoroutinesViewModel
 import com.justclean.task.model.Post
@@ -20,8 +22,8 @@ class MainViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : LiveCoroutinesViewModel() {
 
-    private val pokemonFetchingIndex: MutableStateFlow<Int> = MutableStateFlow(0)
-    val pokemonListLiveData: LiveData<List<Post>>
+    private val postFetchingIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+    val postListLiveData: LiveData<List<Post>>
 
     private val _toastLiveData: MutableLiveData<String> = MutableLiveData()
     val toastLiveData: LiveData<String> get() = _toastLiveData
@@ -31,7 +33,7 @@ class MainViewModel @ViewModelInject constructor(
     init {
         Timber.d("init MainViewModel")
 
-        pokemonListLiveData = pokemonFetchingIndex.asLiveData().switchMap {
+        postListLiveData = postFetchingIndex.asLiveData().switchMap {
             isLoading.set(true)
             launchOnViewModelScope {
                 this.mainRepository.fetchPostList(
@@ -45,6 +47,6 @@ class MainViewModel @ViewModelInject constructor(
 
     @MainThread
     fun fetchPokemonList() {
-        pokemonFetchingIndex.value++
+        postFetchingIndex.value++
     }
 }

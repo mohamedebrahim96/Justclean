@@ -16,8 +16,9 @@ import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class MainRepository /*@Inject*/ constructor(
+class MainRepository @Inject constructor(
     private val postClient: PostClient,
     private val PostDao: PostDao
 ) : Repository {
@@ -30,7 +31,7 @@ class MainRepository /*@Inject*/ constructor(
     ) = flow {
         var posts = PostDao.getAllPostList()
         if (posts.isEmpty()) {
-            val response = postClient.fetchPokemonList(page = page)
+            val response = postClient.fetchPokemonList()
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
                     posts = response

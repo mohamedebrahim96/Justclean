@@ -1,3 +1,8 @@
+/**
+ * Created by @mohamedebrahim96 on 03,December,2020.
+ * ebrahimm131@gmail.com,
+ * Dubai, UAE.
+ */
 package com.justclean.task.persistence
 
 import androidx.room.Dao

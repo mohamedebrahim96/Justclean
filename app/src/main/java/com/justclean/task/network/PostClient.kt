@@ -5,13 +5,14 @@
  */
 package com.justclean.task.network
 
+import javax.inject.Inject
 
 
 class PostClient @Inject constructor(
         private val postService: PostService
     ) {
 
-        suspend fun fetchPokemonList(page: Int) = postService.fetchPostList()
+        suspend fun fetchPokemonList() = postService.fetchPostList()
 
         suspend fun fetchPokemonInfo(id: Int) = postService.fetchPostComment(id)
 

@@ -1,3 +1,8 @@
+/**
+ * Created by @mohamedebrahim96 on 03,December,2020.
+ * ebrahimm131@gmail.com,
+ * Dubai, UAE.
+ */
 package com.justclean.task.persistence
 
 import androidx.room.Database
@@ -9,6 +14,6 @@ import com.justclean.task.model.PostComment
 //@TypeConverters(value = [TypeResponseConverter::class])
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun PostDao(): PostDao
-    abstract fun PostCommentDao(): PostCommentDao
+    abstract fun postDao(): PostDao
+    abstract fun postCommentDao(): PostCommentDao
 }
