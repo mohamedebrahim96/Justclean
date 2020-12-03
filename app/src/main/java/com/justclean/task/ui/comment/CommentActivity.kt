@@ -29,14 +29,14 @@ class CommentActivity : DataBindingActivity() {
 
     @VisibleForTesting
     val viewModel: CommentViewModel by viewModels {
-        CommentViewModel.provideFactory(commentViewModelFactory, PostItem.title)
+        CommentViewModel.provideFactory(commentViewModelFactory, PostItem.id)
     }
 
     private val binding: ActivityCommentBinding by binding(R.layout.activity_comment)
     private val PostItem: Post by argument(EXTRA_POKEMON)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        onTransformationEndContainerApplyParams()
+       // onTransformationEndContainerApplyParams()
         super.onCreate(savedInstanceState)
         binding.apply {
             lifecycleOwner = this@CommentActivity

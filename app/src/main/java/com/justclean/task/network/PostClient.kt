@@ -16,8 +16,5 @@ class PostClient @Inject constructor(
 
         suspend fun fetchPostComment(id: Int) = postService.fetchPostComment(id)
 
-        companion object {
-            private const val PAGING_SIZE = 20
-        }
     }
 

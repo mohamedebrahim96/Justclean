@@ -60,6 +60,22 @@
             app:layout_constraintTop_toBottomOf="@+id/app_name"
             tools:text="skydoves" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.pokemonInfoLiveData.body}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:translationZ="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="skydoves" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -42,17 +42,17 @@ class CommentViewModel @AssistedInject constructor(
 
     @AssistedInject.Factory
     interface AssistedFactory {
-        fun create(commentName: String): CommentViewModel
+        fun create(postID: Int): CommentViewModel
     }
 
     companion object {
         fun provideFactory(
             assistedFactory: AssistedFactory,
-            pokemonName: String
+            postID: Int
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return assistedFactory.create(pokemonName) as T
+                return assistedFactory.create(postID) as T
             }
         }
     }

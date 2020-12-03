@@ -36,7 +36,7 @@ class CommentRepository @Inject constructor(
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
                     postCommentDao.insertPostComment(response)
-                    emit(response)
+                    emit(response[0])
                     onSuccess()
                 }
             }

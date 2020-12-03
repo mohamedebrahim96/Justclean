@@ -24,7 +24,7 @@ class MainActivity : DataBindingActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        onTransformationStartContainer()
+        //onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         binding.apply {
             lifecycleOwner = this@MainActivity
