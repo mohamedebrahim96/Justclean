@@ -16,8 +16,9 @@ import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class MainRepository /*@Inject*/ constructor(
+class MainRepository @Inject constructor(
     private val postClient: PostClient,
     private val PostDao: PostDao
 ) : Repository {

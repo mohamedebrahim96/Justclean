@@ -7,6 +7,8 @@ package com.justclean.task.ui.main
 
 import androidx.annotation.MainThread
 import androidx.databinding.ObservableBoolean
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.justclean.task.base.LiveCoroutinesViewModel
 import com.justclean.task.model.Post

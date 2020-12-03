@@ -53,7 +53,7 @@
             app:paginationPokemonList="@{vm}"
             app:spanCount="2"
             app:toast="@{vm.toastLiveData}"
-            tools:listitem="@layout/item_pokemon" />
+            tools:listitem="@layout/item_post" />
 
         <ProgressBar
             android:id="@+id/progressbar"

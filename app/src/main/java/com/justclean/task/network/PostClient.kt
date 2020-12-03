@@ -5,6 +5,7 @@
  */
 package com.justclean.task.network
 
+import javax.inject.Inject
 
 
 class PostClient @Inject constructor(

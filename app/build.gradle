@@ -51,10 +51,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // architecture components
+    implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycleVersion"
+    testImplementation "androidx.arch.core:core-testing:$versions.archCompomentVersion"
 
     //Room Database
     implementation "androidx.room:room-runtime:$versions.roomVersion"
@@ -89,4 +91,15 @@ dependencies {
 
     // debugging
     implementation "com.jakewharton.timber:timber:$versions.timberVersion"
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"
+    implementation "androidx.hilt:hilt-common:$versions.hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltVersion"
+    compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:$versions.assistedInjectVersion"
+    kapt "com.squareup.inject:assisted-inject-processor-dagger2:$versions.assistedInjectVersion"
+    kapt "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$versions.hiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hiltCoreVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
 }
