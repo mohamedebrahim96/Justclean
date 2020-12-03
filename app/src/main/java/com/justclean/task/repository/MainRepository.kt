@@ -8,13 +8,18 @@ package com.justclean.task.repository
 import androidx.annotation.WorkerThread
 import com.justclean.task.network.PostClient
 import com.justclean.task.persistence.PostDao
+import com.skydoves.sandwich.message
+import com.skydoves.sandwich.onError
+import com.skydoves.sandwich.onException
+import com.skydoves.sandwich.suspendOnSuccess
+import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MainRepository /*@Inject*/ constructor(
     private val postClient: PostClient,
-    private val pokemonDao: PostDao
+    private val PostDao: PostDao
 ) : Repository {
 
     @WorkerThread
@@ -23,20 +28,20 @@ class MainRepository /*@Inject*/ constructor(
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        var pokemons = pokemonDao.getPokemonList(page)
-        if (pokemons.isEmpty()) {
+        var posts = PostDao.getAllPostList()
+        if (posts.isEmpty()) {
             val response = postClient.fetchPokemonList(page = page)
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
-                    pokemons = response.results
-                    pokemons.forEach { pokemon -> pokemon.page = page }
-                    pokemonDao.insertPokemonList(pokemons)
-                    emit(pokemonDao.getAllPokemonList(page))
+                    posts = response
+                    posts.forEach { pokemon -> pokemon.page = page }
+                    PostDao.insertPostList(posts)
+                    emit(PostDao.getAllPostList())
                     onSuccess()
                 }
             }
                 // handle the case when the API request gets an error response.
-                // e.g. internal server error.
+                //internal server error.
                 .onError {
                     onError(message())
                 }
@@ -46,7 +51,7 @@ class MainRepository /*@Inject*/ constructor(
                     onError(message())
                 }
         } else {
-            emit(pokemonDao.getAllPostList(page))
+            emit(PostDao.getAllPostList())
             onSuccess()
         }
     }.flowOn(Dispatchers.IO)

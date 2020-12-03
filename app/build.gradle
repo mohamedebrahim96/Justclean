@@ -68,6 +68,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$versions.okhttpVersion"
 
+    // whatIf
+    implementation "com.github.skydoves:whatif:$versions.whatIfVersion"
+
     // moshi
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshiVersion"
