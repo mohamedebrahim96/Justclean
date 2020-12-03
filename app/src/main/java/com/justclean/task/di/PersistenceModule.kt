@@ -47,7 +47,7 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun providePokemonInfoDao(appDatabase: AppDatabase): PostCommentDao {
+    fun providePostCommentDao(appDatabase: AppDatabase): PostCommentDao {
         return appDatabase.postCommentDao()
     }
 }

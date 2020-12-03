@@ -5,6 +5,7 @@
  */
 package com.justclean.task.di
 
+
 import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.Module
 import dagger.hilt.InstallIn

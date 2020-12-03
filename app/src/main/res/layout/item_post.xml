@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="post"
             type="com.justclean.task.model.Post" />
@@ -23,30 +22,30 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:background="@color/background800"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/white_12"
             app:cardCornerRadius="14dp"
             app:cardElevation="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:foreground="?attr/selectableItemBackground"
-                tools:background="@color/background800"
-                tools:ignore="UnusedAttribute">
+                tools:background="@color/background800">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/image"
+                <TextView
+                    android:id="@+id/body"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:scaleType="center"
+                    android:textColor="@color/background800"
                     android:text="@{post.body}"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="test"
+                    />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,12 +54,13 @@
                     android:maxLines="1"
                     android:padding="12dp"
                     android:text="@{post.title}"
-                    android:textColor="@color/white"
+                    android:textColor="@color/background800"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="test" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
