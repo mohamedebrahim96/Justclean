@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.justclean.task.R
 import com.justclean.task.databinding.ItemPostBinding
 import com.justclean.task.model.Post
-import com.justclean.task.ui.details.DetailActivity
+import com.justclean.task.ui.comment.CommentActivity
 
 
 class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
@@ -31,7 +31,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
                     ?: return@setOnClickListener
                 val currentClickedAt = SystemClock.elapsedRealtime()
                 if (currentClickedAt - onClickedAt > binding.transformationLayout.duration) {
-                    DetailActivity.startActivity(binding.transformationLayout, items[position])
+                    CommentActivity.startActivity(binding.transformationLayout, items[position])
                     onClickedAt = currentClickedAt
                 }
             }

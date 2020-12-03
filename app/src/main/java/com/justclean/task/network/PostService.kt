@@ -17,5 +17,5 @@ interface PostService {
     suspend fun fetchPostList(): ApiResponse<List<Post>>
 
     @GET("/posts/{id}/comments")
-    suspend fun fetchPostComment(@Path("id") id: Int): ApiResponse<PostComment>
+    suspend fun fetchPostComment(@Path("id") id: Int): ApiResponse<List<PostComment>>
 }

@@ -1,3 +1,8 @@
+/**
+ * Created by @mohamedebrahim96 on 03,December,2020.
+ * ebrahimm131@gmail.com,
+ * Dubai, UAE.
+ */
 package com.justclean.task.binding
 
 import androidx.databinding.BindingAdapter
@@ -8,11 +13,6 @@ import com.skydoves.whatif.whatIfNotNullAs
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 
-/**
- * Created by @mohamedebrahim96 on 03,December,2020.
- * ebrahimm131@gmail.com,
- * Dubai, UAE.
- */
 object RecyclerViewBinding {
     @JvmStatic
     @BindingAdapter("adapter")
