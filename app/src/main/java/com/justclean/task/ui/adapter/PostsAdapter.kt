@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.justclean.task.R
-import com.justclean.task.databinding.ItemPokemonBinding
+import com.justclean.task.databinding.ItemPostBinding
 import com.justclean.task.model.Post
 import com.justclean.task.ui.details.DetailActivity
 
@@ -24,7 +24,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding =
-            DataBindingUtil.inflate<ItemPokemonBinding>(inflater, R.layout.item_post, parent, false)
+            DataBindingUtil.inflate<ItemPostBinding>(inflater, R.layout.item_post, parent, false)
         return PostsViewHolder(binding).apply {
             binding.root.setOnClickListener {
                 val position = bindingAdapterPosition.takeIf { it != RecyclerView.NO_POSITION }
@@ -54,6 +54,6 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
 
     override fun getItemCount() = items.size
 
-    class PostsViewHolder(val binding: ItemPokemonBinding) :
+    class PostsViewHolder(val binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

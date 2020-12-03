@@ -31,7 +31,7 @@ class MainRepository @Inject constructor(
     ) = flow {
         var posts = PostDao.getAllPostList()
         if (posts.isEmpty()) {
-            val response = postClient.fetchPokemonList(page = page)
+            val response = postClient.fetchPokemonList()
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
                     posts = response

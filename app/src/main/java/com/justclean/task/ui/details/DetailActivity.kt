@@ -8,11 +8,12 @@ package com.justclean.task.ui.details
 import android.app.Activity
 import android.content.Intent
 import androidx.annotation.VisibleForTesting
+import com.justclean.task.base.DataBindingActivity
 import com.justclean.task.model.Post
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 
-class DetailActivity {
+class DetailActivity : DataBindingActivity() {
 
     companion object {
         @VisibleForTesting
