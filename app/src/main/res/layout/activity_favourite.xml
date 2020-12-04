@@ -6,11 +6,11 @@
 
         <variable
             name="vm"
-            type="com.justclean.task.ui.main.MainViewModel" />
+            type="com.justclean.task.ui.favourite.FavouriteViewModel" />
 
         <variable
             name="adapter"
-            type="com.justclean.task.ui.adapters.PostsAdapter" />
+            type="com.justclean.task.ui.adapters.FavouritePostsAdapter" />
 
     </data>
 
@@ -30,7 +30,7 @@
 
             <include
                 android:id="@+id/main_toolbar"
-                layout="@layout/toolbar_home" />
+                layout="@layout/toolbar_fav" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -46,7 +46,7 @@
             android:scrollbars="vertical"
             app:adapter="@{adapter}"
             app:adapterPostList="@{vm.postListLiveData}"
-            app:mainViewModel="@{vm}"
+            app:favViewModel="@{vm}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

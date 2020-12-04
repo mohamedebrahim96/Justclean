@@ -16,6 +16,6 @@ interface PostCommentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPostComment(postComment: List<PostComment>)
 
-    @Query("SELECT * FROM PostComment WHERE postId = :postId")
-    suspend fun getPostComment(postId: Int): PostComment?
+    @Query("SELECT * FROM PostComment WHERE postId = :postId_")
+    suspend fun getAllPostComments(postId_: Int): List<PostComment?>
 }

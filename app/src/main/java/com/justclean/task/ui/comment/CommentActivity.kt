@@ -15,6 +15,7 @@ import com.justclean.task.base.DataBindingActivity
 import com.justclean.task.databinding.ActivityCommentBinding
 import com.justclean.task.extensions.argument
 import com.justclean.task.model.Post
+import com.justclean.task.ui.adapters.PostsCommentAdapter
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,12 +36,13 @@ class CommentActivity : DataBindingActivity() {
     private val PostItem: Post by argument(EXTRA_POSTS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-       // onTransformationEndContainerApplyParams()
+        // onTransformationEndContainerApplyParams()
         super.onCreate(savedInstanceState)
         binding.apply {
             lifecycleOwner = this@CommentActivity
             post = PostItem
             vm = viewModel
+            adapter = PostsCommentAdapter()
         }
     }
 

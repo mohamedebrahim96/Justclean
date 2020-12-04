@@ -29,14 +29,14 @@ class CommentRepository @Inject constructor(
         id: Int,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
-    ) = flow<PostComment?> {
-        val postComment = postCommentDao.getPostComment(id)
-        if (postComment == null) {
+    ) = flow {
+        val postComment = postCommentDao.getAllPostComments(id)
+        if (postComment.isEmpty()) {
             val response = postClient.fetchPostComment(id = id)
             response.suspendOnSuccess {
                 data.whatIfNotNull { response ->
                     postCommentDao.insertPostComment(response)
-                    emit(response[0])
+                    emit(response)
                     onSuccess()
                 }
             }

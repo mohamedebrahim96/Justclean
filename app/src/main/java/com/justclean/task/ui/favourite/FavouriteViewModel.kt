@@ -3,11 +3,10 @@
  * ebrahimm131@gmail.com,
  * Dubai, UAE.
  */
-package com.justclean.task.ui.main
+package com.justclean.task.ui.favourite
 
 import androidx.annotation.MainThread
 import androidx.databinding.ObservableBoolean
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.justclean.task.base.LiveCoroutinesViewModel
@@ -17,9 +16,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import timber.log.Timber
 
 
-class MainViewModel @ViewModelInject constructor(
+class FavouriteViewModel @ViewModelInject constructor(
     private val mainRepository: MainRepository,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    @androidx.hilt.Assisted
+    private val savedStateHandle: SavedStateHandle
 ) : LiveCoroutinesViewModel() {
 
     private val postFetchingIndex: MutableStateFlow<Int> = MutableStateFlow(0)
@@ -35,7 +35,7 @@ class MainViewModel @ViewModelInject constructor(
         postListLiveData = postFetchingIndex.asLiveData().switchMap {
             isLoading.set(true)
             launchOnViewModelScope {
-                this.mainRepository.fetchPostList(
+                this.mainRepository.getFavPostList(
                     onSuccess = { isLoading.set(false) },
                     onError = { _toastLiveData.postValue(it) }
                 ).asLiveData()
@@ -44,6 +44,7 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     @MainThread
-    suspend fun savePost(postID:Int, liked:Boolean) = this.mainRepository.savePostLocally(postID,liked)
+    suspend fun savePost(postID: Int, liked: Boolean) =
+        this.mainRepository.savePostLocally(postID, liked)
 
 }

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="post"
-            type="com.justclean.task.model.Post" />
+            name="postComment"
+            type="com.justclean.task.model.PostComment" />
 
     </data>
 
@@ -30,19 +30,20 @@
                 android:layout_height="wrap_content"
                 tools:background="@color/background800">
 
-
                 <TextView
                     android:id="@+id/body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:scaleType="center"
-                    android:text="@{post.body}"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@{postComment.body}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name"
-                    tools:text="test" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="test"
+                    />
 
                 <TextView
                     android:id="@+id/name"
@@ -52,7 +53,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:padding="12dp"
-                    android:text="@{post.title}"
+                    android:text="@{postComment.email}"
                     android:textColor="@color/white_12"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -62,42 +63,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="test" />
 
-                <ImageView
-                    android:id="@+id/saveBTN"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_like"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/body" />
-
-                <ImageView
-                    android:id="@+id/commentBTN"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_comment"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/saveBTN"
-                    app:layout_constraintEnd_toStartOf="@+id/shareBTN"
-                    app:layout_constraintStart_toEndOf="@+id/saveBTN"
-                    app:layout_constraintTop_toTopOf="@+id/saveBTN" />
-
-                <ImageView
-                    android:id="@+id/shareBTN"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_share"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/saveBTN"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/saveBTN" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
