@@ -27,6 +27,9 @@
         <activity
             android:name=".ui.comment.CommentActivity"
             android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.favourite.FavouriteActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

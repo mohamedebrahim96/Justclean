@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.databinding.BindingAdapter
+import com.justclean.task.ui.comment.CommentActivity
+import com.justclean.task.ui.favourite.FavouriteActivity
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 
@@ -40,6 +42,17 @@ object ViewBinding {
         if (onBackPress && context is OnBackPressedDispatcherOwner) {
             view.setOnClickListener {
                 context.onBackPressedDispatcher.onBackPressed()
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("onLikePressed")
+    fun bindOnLikePressed(view: View, onBackPress: Boolean) {
+        val context = view.context
+        if (onBackPress && context is OnBackPressedDispatcherOwner) {
+            view.setOnClickListener {
+                FavouriteActivity.startActivity(context)
             }
         }
     }
