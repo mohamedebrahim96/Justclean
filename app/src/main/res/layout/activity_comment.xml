@@ -10,6 +10,10 @@
         <variable
             name="vm"
             type="com.justclean.task.ui.comment.CommentViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.justclean.task.ui.adapters.PostsCommentAdapter" />
     </data>
 
 
@@ -23,6 +27,7 @@
             android:id="@+id/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:paddingStart="12dp"
             android:paddingTop="12dp"
             android:paddingEnd="6dp"
@@ -34,9 +39,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/app_name"
-            style="@style/TextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/app_name"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -44,11 +49,13 @@
             app:layout_constraintStart_toEndOf="@id/arrow"
             app:layout_constraintTop_toTopOf="@id/arrow" />
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:text="@{post.title}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:textColor="@color/white"
@@ -58,22 +65,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_name"
-            tools:text="skydoves" />
+            tools:text="Post title" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.pokemonInfoLiveData.body}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/white"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:translationZ="100dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:padding="6dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            android:scrollbars="vertical"
+            app:adapter="@{adapter}"
+            app:adapterPostCommentList="@{vm.postCommentLiveData}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:text="skydoves" />
+            app:spanCount="2"
+            app:toast="@{vm.toastLiveData}"
+            tools:listitem="@layout/item_post" />
 
 
 

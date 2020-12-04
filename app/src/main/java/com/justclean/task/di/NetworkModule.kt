@@ -49,7 +49,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providePostClient(pokedexService: PostService): PostClient {
-        return PostClient(pokedexService)
+    fun providePostClient(postService: PostService): PostClient {
+        return PostClient(postService)
     }
 }
