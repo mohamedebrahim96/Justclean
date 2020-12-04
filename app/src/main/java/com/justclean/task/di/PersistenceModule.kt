@@ -41,13 +41,13 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun providePokemonDao(appDatabase: AppDatabase): PostDao {
+    fun providePostDao(appDatabase: AppDatabase): PostDao {
         return appDatabase.postDao()
     }
 
     @Provides
     @Singleton
-    fun providePokemonInfoDao(appDatabase: AppDatabase): PostCommentDao {
+    fun providePostCommentDao(appDatabase: AppDatabase): PostCommentDao {
         return appDatabase.postCommentDao()
     }
 }

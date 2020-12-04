@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bc80d14b44042d2adf9be4efd41dc2b0",
+    "identityHash": "1593f0431e2db0e178595458c4f1f6c2",
     "entities": [
       {
         "tableName": "Post",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`page` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `id` INTEGER NOT NULL, `title` TEXT NOT NULL, `body` TEXT NOT NULL, PRIMARY KEY(`userId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`liked` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `id` INTEGER NOT NULL, `title` TEXT NOT NULL, `body` TEXT NOT NULL, PRIMARY KEY(`userId`))",
         "fields": [
           {
-            "fieldPath": "page",
-            "columnName": "page",
+            "fieldPath": "liked",
+            "columnName": "liked",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -50,14 +50,8 @@
       },
       {
         "tableName": "PostComment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`page` INTEGER NOT NULL, `postId` INTEGER NOT NULL, `id` INTEGER NOT NULL, `name` TEXT NOT NULL, `email` TEXT NOT NULL, `body` TEXT NOT NULL, PRIMARY KEY(`postId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`postId` INTEGER NOT NULL, `id` INTEGER NOT NULL, `name` TEXT NOT NULL, `email` TEXT NOT NULL, `body` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
-          {
-            "fieldPath": "page",
-            "columnName": "page",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "postId",
             "columnName": "postId",
@@ -91,7 +85,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "postId"
+            "id"
           ],
           "autoGenerate": false
         },
@@ -102,7 +96,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bc80d14b44042d2adf9be4efd41dc2b0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1593f0431e2db0e178595458c4f1f6c2')"
     ]
   }
 }

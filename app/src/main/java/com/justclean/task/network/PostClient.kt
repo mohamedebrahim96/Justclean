@@ -12,12 +12,9 @@ class PostClient @Inject constructor(
         private val postService: PostService
     ) {
 
-        suspend fun fetchPokemonList() = postService.fetchPostList()
+        suspend fun fetchPostList() = postService.fetchPostList()
 
-        suspend fun fetchPokemonInfo(id: Int) = postService.fetchPostComment(id)
+        suspend fun fetchPostComment(id: Int) = postService.fetchPostComment(id)
 
-        companion object {
-            private const val PAGING_SIZE = 20
-        }
     }
 

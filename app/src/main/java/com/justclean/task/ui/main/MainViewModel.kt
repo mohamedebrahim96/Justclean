@@ -32,12 +32,10 @@ class MainViewModel @ViewModelInject constructor(
 
     init {
         Timber.d("init MainViewModel")
-
         postListLiveData = postFetchingIndex.asLiveData().switchMap {
             isLoading.set(true)
             launchOnViewModelScope {
                 this.mainRepository.fetchPostList(
-                    page = it,
                     onSuccess = { isLoading.set(false) },
                     onError = { _toastLiveData.postValue(it) }
                 ).asLiveData()
@@ -46,7 +44,6 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     @MainThread
-    fun fetchPokemonList() {
-        postFetchingIndex.value++
-    }
+    suspend fun savePost(postID:Int, liked:Boolean) = this.mainRepository.savePostLocally(postID,liked)
+
 }

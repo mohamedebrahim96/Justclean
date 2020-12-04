@@ -17,9 +17,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class PostComment(
-    var page: Int = 0,
-    @field:Json(name = "postId") @PrimaryKey val postId: Int,
-    @field:Json(name = "id") val id: Int,
+    @field:Json(name = "postId")  val postId: Int,
+    @field:Json(name = "id") @PrimaryKey val id: Int,
     @field:Json(name = "name") val name: String,
     @field:Json(name = "email") val email: String,
     @field:Json(name = "body") val body: String

@@ -8,7 +8,7 @@ package com.justclean.task.di
 import com.justclean.task.network.PostClient
 import com.justclean.task.persistence.PostCommentDao
 import com.justclean.task.persistence.PostDao
-import com.justclean.task.repository.DetailRepository
+import com.justclean.task.repository.CommentRepository
 import com.justclean.task.repository.MainRepository
 import dagger.Module
 import dagger.Provides
@@ -24,18 +24,18 @@ object RepositoryModule {
     @Provides
     @ActivityRetainedScoped
     fun provideMainRepository(
-        pokedexClient: PostClient,
-        pokemonDao: PostDao
+        postClient: PostClient,
+        postDao: PostDao
     ): MainRepository {
-        return MainRepository(pokedexClient, pokemonDao)
+        return MainRepository(postClient, postDao)
     }
 
     @Provides
     @ActivityRetainedScoped
-    fun provideDetailRepository(
-        pokedexClient: PostClient,
+    fun provideCommentRepository(
+        postClient: PostClient,
         postCommentDao: PostCommentDao
-    ): DetailRepository {
-        return DetailRepository(pokedexClient, postCommentDao)
+    ): CommentRepository {
+        return CommentRepository(postClient, postCommentDao)
     }
 }

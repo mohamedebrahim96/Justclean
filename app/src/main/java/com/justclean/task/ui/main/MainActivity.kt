@@ -12,7 +12,7 @@ import androidx.annotation.VisibleForTesting
 import com.justclean.task.R
 import com.justclean.task.base.DataBindingActivity
 import com.justclean.task.databinding.ActivityMainBinding
-import com.justclean.task.ui.adapter.PostsAdapter
+import com.justclean.task.ui.adapters.PostsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +23,7 @@ class MainActivity : DataBindingActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         binding.apply {
             lifecycleOwner = this@MainActivity

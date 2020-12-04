@@ -16,9 +16,12 @@ interface PostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPostList(postList: List<Post>)
 
-    @Query("SELECT * FROM Post WHERE page = :page_")
-    suspend fun getPostList(page_: Int): List<Post>
-
     @Query("SELECT * FROM Post")
     suspend fun getAllPostList(): List<Post>
+
+    @Query("SELECT * FROM Post WHERE liked=1")
+    suspend fun getAllFavPostList(): List<Post>
+
+    @Query("UPDATE Post SET liked = :liked_ WHERE id = :postID_")
+    suspend fun updateLikedPost(postID_: Int, liked_: Boolean)
 }
