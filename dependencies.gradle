@@ -4,10 +4,10 @@
 // */
 
 ext.versions = [
-        minSdk               : 21,
+        minSdk               : 43,
         compileSdk           : 30,
         versionCode          : 22,
-        versionName          : '1.2.2',
+        versionName          : '2.4.3',
 
         // gradle plugins
         gradleBuildTool      : '4.1.1',
