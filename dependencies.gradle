@@ -73,6 +73,9 @@ ext.versions = [
         // debugging
         timberVersion        : '4.7.1',
 
+        // work manager
+        work        : '2.4.0',
+
         // unit test
         truthVersion         : '1.0.1',
         junitVersion         : '4.13.1',
