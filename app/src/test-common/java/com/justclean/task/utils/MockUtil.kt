@@ -25,9 +25,9 @@ object MockUtil {
     fun mockPostComment() = PostComment(
         postId = 10,
         id = 200,
-        name = "",
-        email = "",
-        body = ""
+        name = "name comment test",
+        email = "email comment test",
+        body = "body comment test"
     )
 
     fun mockPostCommentList() = listOf(mockPostComment())
